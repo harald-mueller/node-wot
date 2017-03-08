@@ -55,6 +55,11 @@ wot-servient
 
 ### How to reate a list of used 3th party libraries? 
 
+```
+# install all used packages (if not already done)
 npm install
+# install nlf globaly
 npm install -g nlf
+# create the license file
 nlf -c > license-report.cvs
+```
