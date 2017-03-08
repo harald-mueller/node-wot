@@ -50,3 +50,11 @@ wot-servient
 * you can query the count by http://localhost:8080/counter/properties/count
 * you can modify the count via POST on http://localhost:8080/counter/actions/increment and http://localhost:8080/counter/actions/decrement
 * application logic is in ``examples/scripts/counter.js``
+
+## Additional information
+
+### How to reate a list of used 3th party libraries? 
+
+npm install
+npm install -g nlf
+nlf -c > license-report.cvs
