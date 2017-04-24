@@ -35,7 +35,11 @@ import * as os from "os"
 
 export function extractScheme(uri: string) {
     let parsed = url.parse(uri);
+    //console.log(parsed)
     // remove trailing ':'
+    if (parsed.protocol === null){
+        throw new Error(`Protocol in url "${uri}" must be valid`)
+    }
     let scheme = parsed.protocol.slice(0, -1);
     logger.debug(`Helpers found scheme '${scheme}'`);
     return scheme;
