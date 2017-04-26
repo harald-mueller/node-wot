@@ -19,7 +19,6 @@
 
 /**
  * Basic test suite for helper functions
- * uncomment the @skip to see failing tests
  * 
  * h0ru5: there is currently some problem with VSC failing to recognize experimentalDecorators option, it is present in both tsconfigs
  */
@@ -28,6 +27,8 @@ import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
 import { expect } from "chai";
 
 import * as Helpers from "../src/helpers";
+
+const net = require('net');
 
 @suite("tests to verify the helpers")
 class HelperTest {
@@ -71,4 +72,18 @@ class HelperTest {
         // ToDo: extend to possible V6 addresses
         address.map((item) => expect(item).to.match(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/))
     }
+
+    @test("should retrieve a free unused TCP port")
+    assert_pass_async(done: Function) {
+        let port = Helpers.getFreePort()
+        //try to listen on port as Server
+        const server = net.createServer();
+        server.on('error', (err: Error) => {
+            done(err);
+        });
+        server.listen(port, () => {
+            done()
+        });
+    }
+    
 }
