@@ -9,6 +9,7 @@ should();
 
 import HttpServer from "../src/http-server";
 import {AssetResourceListener} from "node-wot-protocols"
+import * as Helpers from "node-wot-helpers"
 
 import * as http from "http";
 import * as rp from "request-promise";
@@ -17,11 +18,12 @@ import * as rp from "request-promise";
 class HttpTest {
 
     @test "should start and stop a server"() {
-        let httpServer = new HttpServer(58080);
+        let port = Helpers.getFreePort();
+        let httpServer = new HttpServer(port);
         let ret = httpServer.start();
 
         expect(ret).to.eq(true);
-        expect(httpServer.getPort()).to.eq(58080); // from test
+        expect(httpServer.getPort()).to.eq(port); // from test
 
         ret = httpServer.stop();
 
