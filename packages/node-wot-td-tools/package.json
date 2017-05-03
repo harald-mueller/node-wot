@@ -19,11 +19,11 @@
     "mocha": "^3.2.0",
     "mocha-typescript": "^1.0.19",
     "ts-node": "^2.1.0",
-    "typedjson": "github:johnweisz/TypedJSON",
     "typescript": "^2.1.6"
   },
   "dependencies": {
+    "node-wot-helpers": "^0.1.0",
     "node-wot-logger": "^0.1.0",
-    "node-wot-helpers": "^0.1.0"
+    "https://github.com/JohnWeisz/TypedJSON.git": "^0.1.7"
   }
 }

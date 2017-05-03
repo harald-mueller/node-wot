@@ -17,48 +17,25 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import winston = require('winston');
+"use strict"
 
-const tsFormat = () => (new Date()).toLocaleTimeString();
+/** Exports of this module */
 
-const consoleTransport = new winston.transports.Console({
-  timestamp: tsFormat,  
-  // colorize the output to the console
-  colorize: true,
-  humanReadableUnhandledException: true
-});
+//Servient: is also the default export
+import {default as Servient} from './servient'
+export {Servient}
+export default Servient
 
-const loggerOpts: winston.LoggerOptions = {
-  transports: [
-    consoleTransport
-  ]
-}
+// ResourceListener & Content
+export {ResourceListener,Content} from 'node-wot-protocols'
 
-export const logger: winston.LoggerInstance = new winston.Logger(loggerOpts);
-export default logger;
+// ResourceListener Implementations
+export * from './resource-listeners/all-resource-listeners'
 
-console.log = logger.verbose
-console.warn = logger.warn
-console.info = logger.info
-console.trace = logger.silly
-console.error = logger.error
+//ContentSerdes
+export {ContentSerdes} from 'node-wot-content-serdes'
 
-//shows objects
-console.dir = logger.debug
+export {default as ConsumedThing} from './consumed-thing'
+export {default as ExposedThing} from './exposed-thing'
 
-
-/* usage */
-// import logger from "./logger";
-// logger.error('Critical');
-// logger.warn('Note well');
-// logger.info('All normal');
-// logger.verbose('Debugging info');
-// logger.debug('Debugging info');
-// logger.silly('Debugging info');
-
-/* specify log level */
-// import logger from "../logger";
-// logger.level = 'debug'; // { error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }
-
-/* specify file logging etc. */
-// TODO
+export {ThingDescription} from "node-wot-td-tools"
