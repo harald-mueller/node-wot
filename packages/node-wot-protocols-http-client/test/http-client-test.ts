@@ -48,11 +48,12 @@ class HttpClientTest {
         httpServer.start();
         let client = new HttpClient()
         let rp=client.readResource(`http://localhost:${httpServer.getPort()}/`);
-        rp.then<Content>(
-           /* onfullfilled:(value: Content) => {
+/*        rp.then<Content>(
+           onfullfilled:(value: Content) => {
             console.log("got content")
-            
+           
         )
+        */
         expect(true).to.true
     }
 }
