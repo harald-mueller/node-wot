@@ -10,7 +10,9 @@
 		"noLib": false,
 		"preserveConstEnums": true,
 		"experimentalDecorators": true,
-		"declaration": true
+		"emitDecoratorMetadata": true,
+		"declaration": true,
+		"strictNullChecks": false
 	},
 	"include": [
 		"src/**/*"

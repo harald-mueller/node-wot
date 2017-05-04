@@ -33,9 +33,15 @@ import logger from "node-wot-logger";
 import * as url from "url";
 import * as os from "os"
 
+const net = require('net');
+
 export function extractScheme(uri: string) {
     let parsed = url.parse(uri);
+    //console.log(parsed)
     // remove trailing ':'
+    if (parsed.protocol === null){
+        throw new Error(`Protocol in url "${uri}" must be valid`)
+    }
     let scheme = parsed.protocol.slice(0, -1);
     logger.debug(`Helpers found scheme '${scheme}'`);
     return scheme;
@@ -66,4 +72,12 @@ export function getAddresses(): Array<string> {
 export function toUriLiteral(address: string): string {
     if (address.indexOf(":") != -1) address = `[${address}]`;
     return address;
+}
+
+export function getFreePort(): number {
+    var srv = net.createServer();
+    srv.listen(0);
+    var port = srv.address().port;
+    srv.close();
+    return port
 }

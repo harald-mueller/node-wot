@@ -19,7 +19,6 @@
 
 /**
  * Basic test suite for helper functions
- * uncomment the @skip to see failing tests
  * 
  * h0ru5: there is currently some problem with VSC failing to recognize experimentalDecorators option, it is present in both tsconfigs
  */
@@ -29,6 +28,7 @@ import { expect } from "chai";
 
 import * as Helpers from "../src/helpers";
 
+const net = require('net');
 
 @suite("tests to verify the helpers")
 class HelperTest {
@@ -36,6 +36,18 @@ class HelperTest {
     @test "should extract the http scheme"() {
         let scheme = Helpers.extractScheme("http://blablupp.de")
         expect(scheme).to.eq("http")
+    }
+
+    @test "should raise exeption on empty url"(){
+        expect(function(){
+            Helpers.extractScheme("");
+        }).to.throw("Protocol in url ")
+    }
+
+    @test "should raise exeption on nasty url"(){
+        expect(function(){
+            Helpers.extractScheme("ThisIsNotAURL");
+        }).to.throw("Protocol in url ")
     }
     
     @test "should extract https scheme"() {
@@ -52,4 +64,26 @@ class HelperTest {
         let scheme = Helpers.extractScheme("coap+ws://blablupp.de")
         expect(scheme).to.eq("coap+ws")
     }
+
+    @test "should retrieve only valid addresses and localhost"(){
+        let address = Helpers.getAddresses();
+        expect(address).contain('127.0.0.1')
+        expect(address).to.have.length.above(1)
+        // ToDo: extend to possible V6 addresses
+        address.map((item) => expect(item).to.match(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/))
+    }
+
+    @test("should retrieve a free unused TCP port")
+    assert_pass_async(done: Function) {
+        let port = Helpers.getFreePort()
+        //try to listen on port as Server
+        const server = net.createServer();
+        server.on('error', (err: Error) => {
+            done(err);
+        });
+        server.listen(port, () => {
+            done()
+        });
+    }
+    
 }
