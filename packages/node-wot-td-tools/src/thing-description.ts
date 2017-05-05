@@ -17,7 +17,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { JsonMember, JsonObject } from "typedjson-npm";
+import { JsonMember, JsonObject } from "typedjson";
 
 /** Internet Media Types */
 /*export enum MediaType {
