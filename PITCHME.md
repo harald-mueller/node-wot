@@ -24,6 +24,8 @@ cd examples/scripts
 wot-servient
 ```
 
+---
+
 - go to http://localhost:8080/counter and you'll find a thing description.
 - you can query the count by http://localhost:8080/counter/properties/count
 - you can modify the count via POST on http://localhost:8080/counter/actions/increment and http://localhost:8080/counter/actions/decrement
