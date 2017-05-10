@@ -12,4 +12,5 @@ $ git clone https://github.com/thingweb/node-wot
 $ cd node-wot
 
 # install root dependencies (locally installs tools like typescript and lerna)
-npm install 
+npm install
+```
