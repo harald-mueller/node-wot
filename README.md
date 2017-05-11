@@ -4,6 +4,8 @@ Web of Things implementation on Node.js
 Build:
 [![Build Status](https://travis-ci.org/thingweb/node-wot.svg?branch=master)](https://travis-ci.org/thingweb/node-wot)
 
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/harald-mueller/node-wot/issue_24_Pitchme?grs=github&t=white)
+
 ## License
 
 MIT License

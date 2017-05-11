@@ -4,6 +4,13 @@
 
 ---
 
+Thingweb aims to be an exploratory implementation of both the WoT Model discussed in the W3C WoT IG and a RESTful HATEOAS based approach as discussed in the IRTF T2T PRG.
+It is simply a toolkit with some demo applications enabling you to create and experiment with WoT applications.
+
+---
+
+### get the whole thing
+
 ```shell
 # Clone the repository
 $ git clone https://github.com/thingweb/node-wot
@@ -15,7 +22,7 @@ $ cd node-wot
 npm install
 ```
 
-+++
+---
 ###No time for explanations - I want to start from something running!
 
 
