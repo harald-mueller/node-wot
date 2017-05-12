@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "node-wot-logger": "^0.1.0",
-    "node-wot-protocols": "^0.1.0"
+    "node-wot-protocols": "^0.1.0",
+    "node-wot-protocols-http-server": "^0.1.0"
   }
 }

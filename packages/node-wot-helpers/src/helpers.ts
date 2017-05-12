@@ -34,6 +34,8 @@ import logger from 'node-wot-logger';
 import * as url from 'url';
 import * as os from 'os'
 
+const net = require('net');
+
 export function extractScheme(uri: string) {
   let parsed = url.parse(uri);
   // console.log(parsed)
