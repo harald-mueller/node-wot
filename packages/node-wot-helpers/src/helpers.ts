@@ -80,4 +80,3 @@ export function toUriLiteral(address: string): string {
   return address;
 }
 
-
